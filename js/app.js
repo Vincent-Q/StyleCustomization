@@ -1,7 +1,9 @@
 (function(){
+	var controlsModule = angular.module('controlsModule', []);
+
 	var styleCustomization = angular.module('styleCustomization', [
 		'ngRoute',
-		'buttonsModule',
+		'controlsModule',
 		'ngAnimate',
 		'ui.router'
 	]);

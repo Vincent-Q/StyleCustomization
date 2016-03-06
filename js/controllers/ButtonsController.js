@@ -1,7 +1,7 @@
 (function(){
-	var buttonsModule = angular.module('buttonsModule', []);
+	var controlsModule = angular.module('controlsModule');
 	
-	buttonsModule.controller('ButtonsController',['$state', function($state){
+	controlsModule.controller('ButtonsController',['$state', function($state){
 		this.userName = '';
 		this.pwd = '';
 		this.isStored = false;
