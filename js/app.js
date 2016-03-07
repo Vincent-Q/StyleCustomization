@@ -12,7 +12,10 @@
 		$urlRouterProvider.otherwise('/buttons');
 
 		$stateProvider
-			.state('buttons', {
+			.state('page-container', {
+				templateUrl: 'page/page-container.html'
+			})
+			.state('page-container.buttons', {
 				url: '/buttons',
 				templateUrl: 'page/buttons-page.html',
 				controller: 'ButtonsController'
