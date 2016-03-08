@@ -1,9 +1,12 @@
 <div id="page-container" class="container-fluid full-screen" ng-app="controlsModule" ng-controller="PageContainerController as pageContainerController">
-	<div class="setting-panel full-screen">
+	<div class="setting-panel full-screen" use-class="shown: isSettingDisplayed === true">
 		<div class="row">
-        	<div class="col-xs-12">
+        	<div class="col-xs-11">
           		<h4 class="title">Buttons configuration</h4>
         	</div>
+          <div class="col-xs-1">
+              <span class="glyphicon glyphicon-pushpin pushpin" use-class="fixed: isSettingDisplayed === true" ng-click="toggleSetting()"></span>
+          </div>
       	</div>
       	<div class="row">
         	<div class="col-xs-12">
@@ -155,14 +158,12 @@
       	</form>
 	</div>
 	<div class="navigator-display-area full-screen">
-		<h2>Style Customization Tool</h2>
-		<ul class="list-group">
-			<li class="list-group-item">Button and button list &nbsp;<span class="glyphicon glyphicon-cog"></span></li>
-			<li class="list-group-item selected">Images and default image &nbsp;<span class="glyphicon glyphicon-cog"></span></li>
-			<li class="list-group-item">List and list group &nbsp;<span class="glyphicon glyphicon-cog"></span></li>
-			<li class="list-group-item">Typography &nbsp;<span class="glyphicon glyphicon-cog"></span></li>
-			<li class="list-group-item">Model dialogs &nbsp;<span class="glyphicon glyphicon-cog"></span></li>
-		</ul>
+      <h2>Style Customization Tool</h2>
+		  <ul class="list-group">
+        <li class="list-group-item" use-class="selected: selectedIndex === $index" ng-click="selectControl($index)" ng-repeat="item in controlList">{{item.label}} &nbsp;
+          <span class="glyphicon glyphicon-cog" ng-click="showSetting($index)"></span>
+        </li>
+		  </ul>
 	</div>
 	<div class="control-display-area full-screen">
 		<div ui-view></div>

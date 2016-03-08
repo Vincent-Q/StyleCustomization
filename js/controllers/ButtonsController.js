@@ -18,8 +18,4 @@
 			}
 		};
 	}]);
-
-	controlsModule.controller('PageContainerController', ['$state', function($state){
-		this.controlList = [];
-	}]);
 })();

@@ -57,6 +57,9 @@ html, body, .full-screen{
 				background-color: transparent;
 				border: none;
 
+				transition: font-size 0.15s;
+				transition-timing-function: ease-in;
+
 				&:hover{
 					text-decoration: underline;
 					cursor: pointer;
@@ -107,12 +110,25 @@ html, body, .full-screen{
 
 		z-index: 1;
 
-		&:hover{
+		&:hover, &.shown{
 			left: 0px;
 		}
 
 		.title{
 			padding-top: 20px;
+		}
+
+		.pushpin{
+			&:hover{
+				cursor: pointer;
+			}
+
+			&.fixed{
+				color: green;
+			}
+
+			font-size: 20px;
+			top: 30px;
 		}
 
 		.divider{
