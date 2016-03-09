@@ -17,8 +17,16 @@
 			})
 			.state('page-container.buttons', {
 				url: '/buttons',
-				templateUrl: 'page/buttons-page.html',
-				controller: 'ButtonsController'
+				views:{
+					'setting-panel':{
+						templateUrl: 'page/setting-panel.html',
+						controller: 'SettingController'
+					},
+					'control-display':{
+						templateUrl: 'page/buttons-page.html',
+						controller: 'ButtonsController'
+					}
+				}
 			});
 	}]);
 })();

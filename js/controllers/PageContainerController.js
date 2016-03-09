@@ -18,38 +18,19 @@
 
 		$scope.selectControl = function(index){
 			$scope.selectedIndex = index;
-			$scope.selectedControlSetting = fetchControlSettingData();
+			$scope.$broadcast('CONTROLLER_SELECTED', $scope.selectedIndex);
 		}
 
 		$scope.showSetting = function(){
+			$scope.$broadcast('SHOW_SETTING_PANEL');
+		};
+
+		$scope.$on('SETTING_PANEL_SHOWN', function(){
 			$scope.isSettingDisplayed = true;
-		};
+		});
 
-		$scope.toggleSetting = function(){
-			if($scope.isSettingDisplayed){
-				$scope.isSettingDisplayed = false;
-			} else {
-				$scope.isSettingDisplayed = true;
-			}
-		};
-
-		var fetchControlSettingData = function(){
-			return {
-				title: 'Buttons configuration',
-				settingGroups:[{
-					groupName: 'Font setting group',
-					styles:[{
-						name: '@btn-border-radius',
-						value: ''
-					}, {
-						name: '@btn-border-width',
-						value: ''
-					}]
-				}]
-
-			}
-		};
-
-		$scope.selectedControlSetting = fetchControlSettingData();
+		$scope.$on('SETTING_PANEL_HIDDEN', function(){
+			$scope.isSettingDisplayed = false;
+		});
 	}]);
 })();

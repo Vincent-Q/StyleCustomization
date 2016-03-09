@@ -92,6 +92,11 @@ html, body, .full-screen{
 		.make-xs-column(9);
 		background: -webkit-linear-gradient(left, @control-start-bg-color, @control-stop-bg-color);
 		padding-top: @control-padding-vertical;
+
+		&.push-right{
+			.make-xs-column-push(1);
+			.make-xs-column(8);
+		}
 	}
 
 	.setting-panel{
