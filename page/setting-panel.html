@@ -1,10 +1,10 @@
-<div class="setting-panel full-screen" use-class="shown: isSettingDisplayed === true" ng-app="controlsModule" ng-controller="SettingController as settingController">
+<div class="setting-panel full-screen" use-class="shown: isSettingDisplayed === true" ng-app="controlsModule" ng-controller="SettingController as settingController" ng-mouseenter="hoverOnSetting()" ng-mouseleave="hoverOffSetting()">
 	<div class="row">
       	<div class="col-xs-11">
         		<h4 class="title">Buttons configuration</h4>
       	</div>
         <div class="col-xs-1">
-            <span class="glyphicon glyphicon-pushpin pushpin" use-class="fixed: isSettingDisplayed === true" ng-click="toggleSetting()"></span>
+            <span class="glyphicon glyphicon-pushpin pushpin" use-class="fixed: isSettingFixed === true" ng-click="toggleSetting()"></span>
         </div>
     	</div>
     	<div class="row">
