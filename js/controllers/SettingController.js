@@ -48,22 +48,51 @@
 		var fetchControlSettingData = function(){
 			return {
 				title: 'Buttons configuration',
-				settingGroups:[{
-					groupName: 'Font setting group',
+				settingGroup:[{
+					category: 'Font setting group',
 					styles:[{
-						name: '@btn-border-radius',
-						value: ''
+						styleName: '@btn-border-radius',
+						placeholder: '@text-color',
+						styleValue: ''
 					}, {
-						name: '@btn-border-width',
-						value: ''
+						styleName: '@btn-border-width',
+						placeholder: '@text-color',
+						styleValue: ''
+					}]
+				}, {
+					category: 'Size setting group',
+					styles: [{
+						styleName: '@btn-padding-vertical',
+						placeholder: '@padding-base-vertical',
+						styleValue: ''
+					}, {
+						styleName: '@btn-padding-horizontal',
+						placeholder: '@padding-base-horizontal',
+						styleValue: ''
+					}]
+				}, {
+					category: 'Color setting group',
+					styles: [{
+						styleName: '@btn-default-border',
+						placeholder: '',
+						styleValue: 'rgb(71, 71, 71)'
+					}, {
+						styleName: '@btn-default-bg',
+						placeholder: '',
+						styleValue: 'transparent'
+					}, {
+						styleName: '@btn-default-color',
+						placeholder: '',
+						styleValue: '#fcfcfc'
 					}]
 				}]
-
 			}
 		};
 
 		$scope.$on('CONTROL_SELECTED', function(event, msg){
 			$scope.selectedControlSetting = fetchControlSettingData();
 		});
+
+		$scope.selectedControlSetting = fetchControlSettingData();
 	}]);
 })();

@@ -1,16 +1,18 @@
 <div class="container-fluid" ng-app="controlsModule" ng-controller="ButtonsController as buttonsController">
   <div class="row">
-    <div class="col-xs-3">
-      <button class="btn btn-default"><span class="glyphicon glyphicon-play"></span> Jetzt ansehen</button>
-    </div>
-    <div class="col-xs-3">
-      <button class="btn btn-primary"><span class="glyphicon glyphicon-play"></span> Jetzt ansehen</button>
-    </div>
-    <div class="col-xs-3">
-      <button class="btn btn-default">Jetzt ansehen</button>
-    </div>
-    <div class="col-xs-3">
-      <button class="btn btn-primary">Jetzt ansehen</button>
+    <div class="col-xs-3" ng-repeat="button in buttons" ng-mouseleave="mouseLeave()">
+      <btn-snippet btn-init="button" class="btn-plate" ng-mouseenter="mouseEnter($index)"></btn-snippet>
+      <div class="hover-layer" ng-show="selectedIndex === $index">
+      	<div class="head-bar">
+      		<span class="delete-plate" ng-click="deleteButton($index)">
+      			<span class="glyphicon glyphicon-remove delete-icon"></span>
+      		</span>
+      	</div>
+      	<div class="foot-bar">
+      		<button class="btn btn-default btn-sm">Copy</button>
+      		<button class="btn btn-default btn-sm">Edit</button>
+      	</div>
+      </div>
     </div>
   </div>
 </div>

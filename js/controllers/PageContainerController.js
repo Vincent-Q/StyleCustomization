@@ -18,7 +18,7 @@
 
 		$scope.selectControl = function(index){
 			$scope.selectedIndex = index;
-			$scope.$broadcast('CONTROLLER_SELECTED', $scope.selectedIndex);
+			$scope.$broadcast('CONTROL_SELECTED', $scope.selectedIndex);
 		}
 
 		$scope.showSetting = function(){

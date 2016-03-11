@@ -1,158 +1,41 @@
 <div class="setting-panel full-screen" use-class="shown: isSettingDisplayed === true" ng-app="controlsModule" ng-controller="SettingController as settingController" ng-mouseenter="hoverOnSetting()" ng-mouseleave="hoverOffSetting()">
 	<div class="row">
-      	<div class="col-xs-11">
-        		<h4 class="title">Buttons configuration</h4>
-      	</div>
-        <div class="col-xs-1">
-            <span class="glyphicon glyphicon-pushpin pushpin" use-class="fixed: isSettingFixed === true" ng-click="toggleSetting()"></span>
+    <div class="col-xs-11">
+      <h4 class="title">{{selectedControlSetting.title}}</h4>
+    </div>
+    <div class="col-xs-1">
+      <span class="glyphicon glyphicon-pushpin pushpin" use-class="fixed: isSettingFixed === true" ng-click="toggleSetting()"></span>
+    </div>
+  </div>
+
+  <div ng-repeat="settingConfig in selectedControlSetting.settingGroup">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="divider"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <span class="h5">{{settingConfig.category}}</span>
+      </div>
+    </div>
+    <form class="form-horizontal">
+      <div class="form-group" ng-repeat="style in settingConfig.styles">
+        <label for="{{style.styleName}}" class="col-sm-5 control-label">{{style.styleName}} :</label>
+        <div class="col-xs-5">
+          <input class="form-control" id="{{style.styleName}}" type="text" placeholder="{{style.placeholder}}" value="{{style.styleValue}}">
         </div>
-    	</div>
-    	<div class="row">
-      	<div class="col-xs-12">
-        		<div class="divider"></div>
-      	</div>
-    	</div>
-    	<div class="row">
-      	<div class="col-xs-12">
-        		<span class="h5">Font setting group</span>
-      	</div>
-    	</div>
-    	<form class="form-horizontal">
-      	<div class="form-group">
-          	<label for="@btn-border-radius" class="col-sm-5 control-label">@btn-border-radius :</label>
-          	<div class="col-xs-5">
-            		<input class="form-control" id="@btn-border-radius" type="text" placeholder="@text-color">
-          	</div>
-          	<div class="col-xs-1 icon-wrapper">
-            		<span class="check-plate">
-              		<span class="glyphicon glyphicon-ok"></span>
-            		</span>
-          	</div>
-          	<div class="col-xs-1 icon-wrapper">
-            		<span class="reset-plate">
-              		<span class="glyphicon glyphicon-refresh"></span>
-            		</span>
-          	</div>
-      	</div>
-      	<div class="form-group">
-          	<label for="@btn-border-width" class="col-sm-5 control-label">@btn-border-width :</label>
-          	<div class="col-xs-5">
-            		<input class="form-control" id="@btn-border-width" type="text" placeholder="@text-color">
-          	</div>
-          	<div class="col-xs-1 icon-wrapper">
-            		<span class="check-plate">
-              		<span class="glyphicon glyphicon-ok"></span>
-            		</span>
-          	</div>
-          	<div class="col-xs-1 icon-wrapper">
-            		<span class="reset-plate">
-              		<span class="glyphicon glyphicon-refresh"></span>
-            		</span>
-          	</div>
-      	</div>
-    	</form>
-    	<div class="row">
-      	<div class="col-xs-12">
-        		<div class="divider"></div>
-      	</div>
-    	</div>
-    	<div class="row">
-      	<div class="col-xs-12">
-        		<span class="h5">Size setting group</span>
-      	</div>
-    	</div>
-    	<form class="form-horizontal">
-      	<div class="form-group">
-          	<label for="@btn-padding-vertical" class="col-sm-5 control-label">@btn-padding-vertical :</label>
-          	<div class="col-xs-5">
-            		<input class="form-control" id="@btn-padding-vertical" type="text" placeholder="@padding-base-vertical">
-          	</div>
-          	<div class="col-xs-1 icon-wrapper">
-            		<span class="check-plate">
-              		<span class="glyphicon glyphicon-ok"></span>
-            		</span>
-          	</div>
-          	<div class="col-xs-1 icon-wrapper">
-            		<span class="reset-plate">
-              		<span class="glyphicon glyphicon-refresh"></span>
-            		</span>
-          	</div>
-      	</div>
-      	<div class="form-group">
-          	<label for="@btn-padding-horizontal" class="col-sm-5 control-label">@btn-padding-horizontal :</label>
-          	<div class="col-xs-5">
-            		<input class="form-control" id="@btn-padding-horizontal" type="text" placeholder="@padding-base-horizontal">
-          	</div>
-          	<div class="col-xs-1 icon-wrapper">
-            		<span class="check-plate">
-              		<span class="glyphicon glyphicon-ok"></span>
-            		</span>
-          	</div>
-          	<div class="col-xs-1 icon-wrapper">
-            		<span class="reset-plate">
-              		<span class="glyphicon glyphicon-refresh"></span>
-            		</span>
-          	</div>
-      	</div>
-    	</form>
-    	<div class="row">
-      	<div class="col-xs-12">
-        		<div class="divider"></div>
-      	</div>
-    	</div>
-    	<div class="row">
-      	<div class="col-xs-12">
-        		<span class="h5">Color setting group</span>
-      	</div>
-    	</div>
-    	<form class="form-horizontal">
-      	<div class="form-group">
-          	<label for="@btn-default-border" class="col-sm-5 control-label">@btn-default-border :</label>
-          	<div class="col-xs-5">
-            		<input class="form-control" id="@btn-default-border" type="text" placeholder="rgb(71, 71, 71)">
-          	</div>
-          	<div class="col-xs-1 icon-wrapper">
-            		<span class="check-plate">
-              		<span class="glyphicon glyphicon-ok"></span>
-            		</span>
-          	</div>
-          	<div class="col-xs-1 icon-wrapper">
-            		<span class="reset-plate">
-              		<span class="glyphicon glyphicon-refresh"></span>
-            		</span>
-          	</div>
-      	</div>
-      	<div class="form-group">
-          	<label for="@btn-default-bg" class="col-sm-5 control-label">@btn-default-bg :</label>
-          	<div class="col-xs-5">
-            		<input class="form-control" id="@btn-default-bg" type="text" placeholder="transparent">
-          	</div>
-          	<div class="col-xs-1 icon-wrapper">
-            		<span class="check-plate">
-              		<span class="glyphicon glyphicon-ok"></span>
-            		</span>
-          	</div>
-          	<div class="col-xs-1 icon-wrapper">
-            		<span class="reset-plate">
-              		<span class="glyphicon glyphicon-refresh"></span>
-            		</span>
-          	</div>
-      	</div>
-      	<div class="form-group">
-          	<label for="@btn-default-color" class="col-sm-5 control-label">@btn-default-color :</label>
-          	<div class="col-xs-5">
-            		<input class="form-control" id="@btn-default-color" type="text" placeholder="#fcfcfc">
-          	</div>
-          	<div class="col-xs-1 icon-wrapper">
-            		<span class="check-plate">
-              		<span class="glyphicon glyphicon-ok"></span>
-            		</span>
-          	</div>
-          	<div class="col-xs-1 icon-wrapper">
-            		<span class="reset-plate">
-              		<span class="glyphicon glyphicon-refresh"></span>
-            		</span>
-          	</div>
-      	</div>
-    	</form>
+        <div class="col-xs-1 icon-wrapper">
+          <span class="check-plate">
+            <span class="glyphicon glyphicon-ok"></span>
+          </span>
+        </div>
+        <div class="col-xs-1 icon-wrapper">
+          <span class="reset-plate">
+            <span class="glyphicon glyphicon-refresh"></span>
+          </span>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
