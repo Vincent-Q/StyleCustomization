@@ -32,5 +32,39 @@
 		$scope.$on('SETTING_PANEL_HIDDEN', function(){
 			$scope.isSettingDisplayed = false;
 		});
+
+		/************************************************************************
+		 ***********************BEGIN : copy behavior****************************
+		 ************************************************************************/
+		var snippet = '';
+		var zeroClient;
+		var bindCopyEvent = function(){
+			zeroClient = new ZeroClipboard();
+
+			zeroClient.on('ready', function(event){
+				zeroClient.on('copy', function(event){
+					$scope.$broadcast('REQUEST_SNIPPET');
+					event.clipboardData.setData('text/plain', snippet);
+				});
+			});
+
+			zeroClient.on('error', function(){
+				ZeroClipboard.destroy();
+			});
+		}
+
+		bindCopyEvent();
+
+		$scope.$on('REPLY_SNIPPET', function(event, data){
+			snippet = data;
+		});
+
+		$scope.$on('SINGLE_CONTROL_SELECTED', function(){
+			zeroClient.clip(document.getElementsByClassName('btn-copy'));
+		})
+
+		/************************************************************************
+		 *************************End : copy behavior****************************
+		 ************************************************************************/
 	}]);
 })();

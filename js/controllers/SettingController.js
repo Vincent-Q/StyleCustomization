@@ -22,10 +22,13 @@
 		};
 
 		$scope.toggleSetting = function(){
+			if(!$scope.isSettingFixed){
+				$scope.isSettingFixed = true;
+				return;
+			}
+
 			if($scope.isSettingDisplayed){
 				__hideSettingPanel()
-			} else {
-				__showSettingPanel(true);
 			}
 		};
 

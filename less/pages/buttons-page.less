@@ -52,8 +52,18 @@
 		position: absolute;
 		text-align: center;
 
-		button:first-child{
-			margin-right: 30px;
+		button{
+			&:first-child{
+				margin-right: 30px;
+			}
+
+			min-width: 55px;
+			min-height: 32px;
+
+			.glyphicon{
+				color: green;
+				top: 0;
+			}
 		}
 	}
 }
