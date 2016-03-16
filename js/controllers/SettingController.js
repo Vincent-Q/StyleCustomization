@@ -44,14 +44,33 @@
 			}
 		};
 
+		$scope.toggleFold = function(index){
+			var settingGroupList = $scope.selectedControlSetting.settingGroup;
+			settingGroupList[index].isFolded = !settingGroupList[index].isFolded;
+		}
+
 		$scope.$on('SHOW_SETTING_PANEL', function(event, msg){
 			__showSettingPanel(true);
 		});
 
+		var processModel = function(settingData){
+			var settingGroupList = settingData.settingGroup;
+
+			for(var i=0; i<settingGroupList.length; i++){
+				if(i === 0){
+					settingGroupList[i].isFolded = false;
+				} else {
+					settingGroupList[i].isFolded = true;
+				}
+			}
+
+			return settingData;
+		};
+
 		var fetchControlSettingData = function(fileUrl){
 			if(fileUrl){
 				fileReaderService.parseVariables(fileUrl).done(function(settingData){
-					$scope.selectedControlSetting = settingData;
+					$scope.selectedControlSetting = processModel(settingData);
 				});
 			}
 		};

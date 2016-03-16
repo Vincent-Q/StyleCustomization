@@ -15,11 +15,16 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-10">
         <span class="h5">{{settingConfig.category}}</span>
       </div>
+      <div class="col-xs-2">
+        <span class="collapse-plate" ng-click="toggleFold($index)">
+          <span class="glyphicon" use-class="glyphicon-chevron-down: settingConfig.isFolded; glyphicon-chevron-up: !settingConfig.isFolded"></span>
+        </span>
+      </div>
     </div>
-    <form class="form-horizontal">
+    <form class="form-horizontal"  ng-show="!settingConfig.isFolded">
       <div class="form-group" ng-repeat="styleItem in settingConfig.style">
         <label for="{{styleItem.styleName}}" class="col-sm-5 control-label">{{styleItem.styleName}} :</label>
         <div class="col-xs-5">
