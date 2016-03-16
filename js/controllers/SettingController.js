@@ -1,7 +1,7 @@
 (function(){
 	var controlsModule = angular.module('controlsModule');
 
-	controlsModule.controller('SettingController', ['$state', '$scope', '$timeout', function($state, $scope, $timeout){
+	controlsModule.controller('SettingController', ['$state', '$scope', '$timeout', 'FileReaderService', function($state, $scope, $timeout, fileReaderService){
 		$scope.isSettingDisplayed = false;
 		$scope.isSettingFixed = false;
 
@@ -48,54 +48,62 @@
 			__showSettingPanel(true);
 		});
 
-		var fetchControlSettingData = function(){
-			return {
-				title: 'Buttons configuration',
-				settingGroup:[{
-					category: 'Font setting group',
-					styles:[{
-						styleName: '@btn-border-radius',
-						placeholder: '@text-color',
-						styleValue: ''
-					}, {
-						styleName: '@btn-border-width',
-						placeholder: '@text-color',
-						styleValue: ''
-					}]
-				}, {
-					category: 'Size setting group',
-					styles: [{
-						styleName: '@btn-padding-vertical',
-						placeholder: '@padding-base-vertical',
-						styleValue: ''
-					}, {
-						styleName: '@btn-padding-horizontal',
-						placeholder: '@padding-base-horizontal',
-						styleValue: ''
-					}]
-				}, {
-					category: 'Color setting group',
-					styles: [{
-						styleName: '@btn-default-border',
-						placeholder: '',
-						styleValue: 'rgb(71, 71, 71)'
-					}, {
-						styleName: '@btn-default-bg',
-						placeholder: '',
-						styleValue: 'transparent'
-					}, {
-						styleName: '@btn-default-color',
-						placeholder: '',
-						styleValue: '#fcfcfc'
-					}]
-				}]
+		var fetchControlSettingData = function(fileUrl){
+			if(fileUrl){
+				fileReaderService.parseVariables(fileUrl).done(function(settingData){
+					//console.log(settingData);
+					$scope.selectedControlSetting = settingData;
+					// {
+					// 	title: 'Buttons configuration update',
+					// 	settingGroup:[{
+					// 		category: 'Font setting group',
+					// 		style:[{
+					// 			styleName: '@btn-border-radius',
+					// 			placeholder: '@text-color',
+					// 			styleValue: ''
+					// 		}, {
+					// 			styleName: '@btn-border-width',
+					// 			placeholder: '@text-color',
+					// 			styleValue: ''
+					// 		}]
+					// 	}, {
+					// 		category: 'Size setting group',
+					// 		style: [{
+					// 			styleName: '@btn-padding-vertical',
+					// 			placeholder: '@padding-base-vertical',
+					// 			styleValue: ''
+					// 		}, {
+					// 			styleName: '@btn-padding-horizontal',
+					// 			placeholder: '@padding-base-horizontal',
+					// 			styleValue: ''
+					// 		}]
+					// 	}, {
+					// 		category: 'Color setting group',
+					// 		style: [{
+					// 			styleName: '@btn-default-border',
+					// 			placeholder: '',
+					// 			styleValue: 'rgb(71, 71, 71)'
+					// 		}, {
+					// 			styleName: '@btn-default-bg',
+					// 			placeholder: '',
+					// 			styleValue: 'transparent'
+					// 		}, {
+					// 			styleName: '@btn-default-color',
+					// 			placeholder: '',
+					// 			styleValue: '#fcfcfc'
+					// 		}]
+					// 	}]
+					// }
+				});
 			}
 		};
 
-		$scope.$on('CONTROL_SELECTED', function(event, msg){
-			$scope.selectedControlSetting = fetchControlSettingData();
+		$scope.$on('CONTROL_SELECTED', function(event, data){
+			var fileUrl = data.fileUrl;
+			fetchControlSettingData(fileUrl);
 		});
 
-		$scope.selectedControlSetting = fetchControlSettingData();
+		// notify parent controller that I'm ready
+		$scope.$emit('SETTING_CONTROLLER_LOADED');
 	}]);
 })();

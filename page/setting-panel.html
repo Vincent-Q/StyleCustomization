@@ -20,10 +20,10 @@
       </div>
     </div>
     <form class="form-horizontal">
-      <div class="form-group" ng-repeat="style in settingConfig.styles">
-        <label for="{{style.styleName}}" class="col-sm-5 control-label">{{style.styleName}} :</label>
+      <div class="form-group" ng-repeat="styleItem in settingConfig.style">
+        <label for="{{styleItem.styleName}}" class="col-sm-5 control-label">{{styleItem.styleName}} :</label>
         <div class="col-xs-5">
-          <input class="form-control" id="{{style.styleName}}" type="text" placeholder="{{style.placeholder}}" value="{{style.styleValue}}">
+          <input class="form-control" id="{{styleItem.styleName}}" type="text" placeholder="{{styleItem.placeholder}}" value="{{styleItem.styleValue}}">
         </div>
         <div class="col-xs-1 icon-wrapper">
           <span class="check-plate">

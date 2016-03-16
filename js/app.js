@@ -1,11 +1,13 @@
 (function(){
-	var controlsModule = angular.module('controlsModule', []);
+	var helperModule = angular.module('helperModule', []);
+	var controlsModule = angular.module('controlsModule', ['helperModule']);
 
 	var styleCustomization = angular.module('styleCustomization', [
 		'ngRoute',
 		'controlsModule',
 		'ngAnimate',
-		'ui.router'
+		'ui.router',
+		'helperModule'
 	]);
 	
 	styleCustomization.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){

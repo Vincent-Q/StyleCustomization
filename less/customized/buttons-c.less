@@ -1,9 +1,150 @@
+/*<xml>*/
+
+/*<title>*/
+	/*buttons configuration*/
+/*</title>*/
+
+/*<settingGroup>*/
+	/*<category>*/
+		/*normal button size*/
+	/*</category>*/
+	
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-padding-vertical:			@padding-base-vertical;
+		/*</stylePair>*/
+		/*<placeholder>*/
+			/*@text-color*/
+		/*</placeholder>*/
+	/*</style>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-padding-horizontal:		@padding-base-horizontal;
+		/*</stylePair>*/
+	/*</style>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-border-width:				@btn-border-width-base;
+		/*</stylePair>*/
+	/*</style>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-radius-all:				@btn-border-radius-base;
+		/*</stylePair>*/
+	/*</style>*/
+/*</settingGroup>*/
+
+/*<settingGroup>*/
+	/*<category>*/
+		/*small button size*/
+	/*</category>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-padding-vertical-sm:		@padding-small-vertical;
+		/*</stylePair>*/
+	/*</style>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-padding-horizontal-sm:		@padding-small-horizontal;
+		/*</stylePair>*/
+	/*</style>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-border-width-sm:			@btn-border-width-base;
+		/*</stylePair>*/
+	/*</style>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-radius-all-sm:				@btn-border-radius-small;
+		/*</stylePair>*/
+	/*</style>*/
+
+/*</settingGroup>*/
+
+/*<settingGroup>*/
+	/*<category>*/
+		/*button color*/
+	/*</category>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-text-color-default:		@btn-default-color;
+		/*</stylePair>*/
+	/*</style>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-bg-color-default:			@btn-default-bg;
+		/*</stylePair>*/
+	/*</style>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-border-color-default:		@btn-default-border;
+		/*</stylePair>*/
+	/*</style>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-text-color-focus:			@btn-default-color;
+		/*</stylePair>*/
+	/*</style>*/
+
+/*</settingGroup>*/
+
+/*<settingGroup>*/
+	/*<category>*/
+		/*normal button font*/
+	/*</category>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-font-size:					@font-size-base;
+		/*</stylePair>*/
+	/*</style>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-line-height:				@line-height-base;
+		/*</stylePair>*/
+	/*</style>*/
+/*</settingGroup>*/
+
+/*<settingGroup>*/
+	/*<category>*/
+		/*small button font*/
+	/*</category>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-font-size-sm:				@font-size-small;
+		/*</stylePair>*/
+	/*</style>*/
+
+	/*<style>*/
+		/*<stylePair>*/
+			@btn-line-height-sm:			@line-height-small;
+		/*</stylePair>*/
+	/*</style>*/
+/*</settingGroup>*/
+
+/*</xml>*/
+
 .btn{
+	.button-size(@btn-padding-vertical; @btn-padding-horizontal; @btn-font-size; @btn-line-height; @btn-radius-all);
 	.font-button;
-	.button-border-width(@btn-border-width-base);
+	.button-border-width(@btn-border-width);
 }
 
 .btn-sm{
+	.button-size(@btn-padding-vertical-sm; @btn-padding-horizontal-sm; @btn-font-size-sm; @btn-line-height-sm; @btn-radius-all-sm);
 	.font-button-sm;
-	.button-border-width(@btn-border-width-base);
+	.button-border-width(@btn-border-width-sm);
 }
