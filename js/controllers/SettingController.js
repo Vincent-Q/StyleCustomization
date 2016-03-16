@@ -51,49 +51,7 @@
 		var fetchControlSettingData = function(fileUrl){
 			if(fileUrl){
 				fileReaderService.parseVariables(fileUrl).done(function(settingData){
-					//console.log(settingData);
 					$scope.selectedControlSetting = settingData;
-					// {
-					// 	title: 'Buttons configuration update',
-					// 	settingGroup:[{
-					// 		category: 'Font setting group',
-					// 		style:[{
-					// 			styleName: '@btn-border-radius',
-					// 			placeholder: '@text-color',
-					// 			styleValue: ''
-					// 		}, {
-					// 			styleName: '@btn-border-width',
-					// 			placeholder: '@text-color',
-					// 			styleValue: ''
-					// 		}]
-					// 	}, {
-					// 		category: 'Size setting group',
-					// 		style: [{
-					// 			styleName: '@btn-padding-vertical',
-					// 			placeholder: '@padding-base-vertical',
-					// 			styleValue: ''
-					// 		}, {
-					// 			styleName: '@btn-padding-horizontal',
-					// 			placeholder: '@padding-base-horizontal',
-					// 			styleValue: ''
-					// 		}]
-					// 	}, {
-					// 		category: 'Color setting group',
-					// 		style: [{
-					// 			styleName: '@btn-default-border',
-					// 			placeholder: '',
-					// 			styleValue: 'rgb(71, 71, 71)'
-					// 		}, {
-					// 			styleName: '@btn-default-bg',
-					// 			placeholder: '',
-					// 			styleValue: 'transparent'
-					// 		}, {
-					// 			styleName: '@btn-default-color',
-					// 			placeholder: '',
-					// 			styleValue: '#fcfcfc'
-					// 		}]
-					// 	}]
-					// }
 				});
 			}
 		};
