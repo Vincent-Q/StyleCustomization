@@ -7,40 +7,46 @@
       <span class="glyphicon glyphicon-pushpin pushpin" use-class="fixed: isSettingFixed === true" ng-click="toggleSetting()"></span>
     </div>
   </div>
-
-  <div ng-repeat="settingConfig in selectedControlSetting.settingGroup">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="divider"></div>
+  <div class="display-box">
+    <div class="scroll-bar">
+      <div class="cursor" ng-mousedown="mouseDown()" ng-style="position"></div>
+    </div>
+    <div class="flexible-container">
+      <div ng-repeat="settingConfig in selectedControlSetting.settingGroup">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="divider"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-10">
+            <span class="h5">{{settingConfig.category}}</span>
+          </div>
+          <div class="col-xs-2">
+            <span class="collapse-plate" ng-click="toggleFold($index)">
+              <span class="glyphicon" use-class="glyphicon-chevron-down: settingConfig.isFolded; glyphicon-chevron-up: !settingConfig.isFolded"></span>
+            </span>
+          </div>
+        </div>
+        <form class="form-horizontal"  ng-show="!settingConfig.isFolded">
+          <div class="form-group" ng-repeat="styleItem in settingConfig.style">
+            <label for="{{styleItem.styleName}}" class="col-sm-5 control-label">{{styleItem.styleName}} :</label>
+            <div class="col-xs-5">
+              <input class="form-control" id="{{styleItem.styleName}}" type="text" placeholder="{{styleItem.placeholder}}" value="{{styleItem.styleValue}}">
+            </div>
+            <div class="col-xs-1 icon-wrapper">
+              <span class="check-plate">
+                <span class="glyphicon glyphicon-ok"></span>
+              </span>
+            </div>
+            <div class="col-xs-1 icon-wrapper">
+              <span class="reset-plate">
+                <span class="glyphicon glyphicon-refresh"></span>
+              </span>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-10">
-        <span class="h5">{{settingConfig.category}}</span>
-      </div>
-      <div class="col-xs-2">
-        <span class="collapse-plate" ng-click="toggleFold($index)">
-          <span class="glyphicon" use-class="glyphicon-chevron-down: settingConfig.isFolded; glyphicon-chevron-up: !settingConfig.isFolded"></span>
-        </span>
-      </div>
-    </div>
-    <form class="form-horizontal"  ng-show="!settingConfig.isFolded">
-      <div class="form-group" ng-repeat="styleItem in settingConfig.style">
-        <label for="{{styleItem.styleName}}" class="col-sm-5 control-label">{{styleItem.styleName}} :</label>
-        <div class="col-xs-5">
-          <input class="form-control" id="{{styleItem.styleName}}" type="text" placeholder="{{styleItem.placeholder}}" value="{{styleItem.styleValue}}">
-        </div>
-        <div class="col-xs-1 icon-wrapper">
-          <span class="check-plate">
-            <span class="glyphicon glyphicon-ok"></span>
-          </span>
-        </div>
-        <div class="col-xs-1 icon-wrapper">
-          <span class="reset-plate">
-            <span class="glyphicon glyphicon-refresh"></span>
-          </span>
-        </div>
-      </div>
-    </form>
   </div>
 </div>

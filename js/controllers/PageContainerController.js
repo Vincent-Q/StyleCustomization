@@ -31,6 +31,14 @@
 			$scope.showSetting = function(){
 				$scope.$broadcast('SHOW_SETTING_PANEL');
 			};
+
+			$scope.mouseUp = function(){
+				$scope.$broadcast('MOUSE_IS_RELEASED');
+			};
+
+			$scope.mouseMove = function(event){
+				$scope.$broadcast('MOUSE_IS_MOVING', event);
+			};
 		}
 
 		function __bindEvent(){

@@ -1,4 +1,4 @@
-<div id="page-container" class="container-fluid full-screen" ng-app="controlsModule" ng-controller="PageContainerController as pageContainerController">
+<div id="page-container" class="container-fluid full-screen" ng-app="controlsModule" ng-controller="PageContainerController as pageContainerController" ng-mouseup="mouseUp()" ng-mousemove="mouseMove($event)">
 	<div ui-view="setting-panel"></div>
   <div class="navigator-display-area full-screen">
       <h2>Style Customization Tool</h2>
