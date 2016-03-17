@@ -8,10 +8,8 @@
     </div>
   </div>
   <div class="display-box">
-    <div class="scroll-bar">
-      <div class="cursor" ng-mousedown="mouseDown()" ng-style="position"></div>
-    </div>
-    <div class="flexible-container">
+    <scroll-bar sb-init="scrollBarOption"></scroll-bar>
+    <div class="flexible-container" ng-style="position">
       <div ng-repeat="settingConfig in selectedControlSetting.settingGroup">
         <div class="row">
           <div class="col-xs-12">

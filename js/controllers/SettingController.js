@@ -8,6 +8,15 @@
 			$scope.position = {
 				'transform': 'translateY(0)'
 			}
+
+			$scope.scrollBarOption = {
+				contentArea: $('.flexible-container'),
+				contentContainer: $('.display-box')
+			};
+
+			$scope.position = {
+				'transform': 'translateY(0)'
+			};
 		}
 
 		function __methodInitialize(){
@@ -42,22 +51,9 @@
 			$scope.toggleFold = function(index){
 				var settingGroupList = $scope.selectedControlSetting.settingGroup;
 				settingGroupList[index].isFolded = !settingGroupList[index].isFolded;
-			};
-
-			$scope.scroll = function(event){
-				if($scope.isMouseDown){
-					$scope.position = {
-						'transform' : 'translateY(' + ((event.pageY - 110) >=0 ? event.pageY - 110 : 0) + 'px)'
-					};
-				}
-			};
-
-			$scope.mouseDown = function(){
-				$scope.isMouseDown = true;
-			};
-
-			$scope.mouseUp = function(){
-				$scope.isMouseDown = false;
+				$timeout(function(){
+					$scope.$broadcast('CONTENT_AREA_CHANGE');
+				});
 			};
 
 			$scope.__showSettingPanel = function(isFixed){
@@ -113,14 +109,6 @@
 		}
 
 		function __bindEvent(){
-			$scope.$on('MOUSE_IS_RELEASED', function(){
-				$scope.mouseUp();
-			});
-
-			$scope.$on('MOUSE_IS_MOVING', function(event, data){
-				$scope.scroll(data);
-			});
-
 			$scope.$on('SHOW_SETTING_PANEL', function(event, msg){
 				$scope.__showSettingPanel(true);
 			});
@@ -128,6 +116,12 @@
 			$scope.$on('CONTROL_SELECTED', function(event, data){
 				var fileUrl = data.fileUrl;
 				$scope.__fetchControlSettingData(fileUrl);
+			});
+
+			$scope.$on('SCROLL_BAR_MOVING', function(event, data){
+				$scope.position = {
+					'transform': 'translateY(' + data + 'px)'
+				};
 			});
 		}
 
