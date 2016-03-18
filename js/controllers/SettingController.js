@@ -121,7 +121,7 @@
 			$scope.$on('SCROLL_BAR_MOVING', function(event, data){
 				$scope.position = {
 					'transform': 'translateY(' + data + 'px)'
-				};
+				}
 			});
 		}
 
@@ -129,6 +129,12 @@
 			__initialize();
 			__methodInitialize();
 			__bindEvent();
+
+			$('.setting-panel').on('mousewheel', function(event){
+				$scope.$apply(function(){
+					$scope.$broadcast('MOUSE_WHEEL_SCROLL', event.originalEvent.wheelDelta);
+				});
+			})
 
 			// notify parent controller that I'm ready
 			$scope.$emit('SETTING_CONTROLLER_LOADED');

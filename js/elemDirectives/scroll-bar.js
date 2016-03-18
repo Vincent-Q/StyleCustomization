@@ -17,6 +17,11 @@
     			}
 
     			function __calculateScrollBarArea(){
+    				if(scope.contentMovableDistance <= 0){
+    					scope.__setPosition(0);
+    					return;
+    				}
+
     				var cursorMinHeight = 30;
     				var scrollBarHeight = element.find('.scroll-bar').height(),
     					cursorHeight;
@@ -29,6 +34,10 @@
 
     				cursorHeight = scrollBarHeight - cursorMovableDistance;
     				element.find('.cursor').height(cursorHeight);
+
+    				if(cursorHeight + scope.__positionValue > scrollBarHeight){
+    					scope.__setPosition(scrollBarHeight - cursorHeight);
+    				}
     			}
 
     			function __calculate(){
@@ -56,6 +65,24 @@
     					scope.__firstPageY = event.pageY;
 	    				scope.isMouseDown = true;
 	    			};
+
+	    			scope.__setPosition = function(newPosition){
+	    				scope.__positionValue = newPosition;
+
+	    				if(scope.__positionValue <=0){
+    						scope.__positionValue = 0;
+    					}
+
+    					if(scope.__positionValue >= cursorMovableDistance){
+    						scope.__positionValue = cursorMovableDistance;
+    					}
+
+    					scope.$emit('SCROLL_BAR_MOVING', __calculateContentPosition(scope.__positionValue));
+
+						scope.position = {
+							'transform': 'translateY(' + scope.__positionValue + 'px)'
+						}
+	    			}
     			}
 
     			function __bindEvent(){
@@ -66,26 +93,22 @@
 
 	    			scope.$on('MOUSE_IS_MOVING', function(event, data){
 	    				if(scope.isMouseDown){
-	    					scope.__positionValue = data.pageY - scope.__firstPageY + scope.__lastReleasedPosition;
-
-	    					if(scope.__positionValue <=0){
-	    						scope.__positionValue = 0;
-	    					}
-
-	    					if(scope.__positionValue >= cursorMovableDistance){
-	    						scope.__positionValue = cursorMovableDistance;
-	    					}
-
-							scope.position = {
-								'transform': 'translateY(' + scope.__positionValue + 'px)'
-							};
-
-							scope.$emit('SCROLL_BAR_MOVING', __calculateContentPosition(scope.__positionValue));
+	    					scope.__setPosition(data.pageY - scope.__firstPageY + scope.__lastReleasedPosition);
 						}
 	    			});
 
 	    			scope.$on('CONTENT_AREA_CHANGE', function(event, data){
 	    				__calculate();
+	    			});
+
+	    			scope.$on('MOUSE_WHEEL_SCROLL', function(event, delta){
+	    				if(delta > 0){
+	    					scope.__setPosition(scope.__positionValue - 15);
+	    				} else {
+	    					scope.__setPosition(scope.__positionValue + 15);
+	    				}
+
+	    				scope.__lastReleasedPosition = scope.__positionValue;
 	    			});
     			}
 
