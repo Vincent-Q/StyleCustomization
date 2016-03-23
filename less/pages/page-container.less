@@ -38,56 +38,6 @@ html, body, .full-screen{
 }
 
 #page-container{
-	background: -webkit-linear-gradient(left, @body-start-bg-color, @body-middle-bg-color @body-middle-bg-position, @body-stop-bg-color);
-
-	.navigator-display-area{
-		.make-xs-column(3);
-		background: -webkit-linear-gradient(left, @navigator-start-bg-color, @navigator-stop-bg-color);
-		padding: @navigator-padding-vertical @navigator-padding-horizontal;
-
-		h2{
-			color: @navigator-color;
-		}
-
-		.list-group{
-			font-size: @list-group-font-size;
-			color: @list-group-color;
-
-			.list-group-item{
-				background-color: transparent;
-				border: none;
-
-				transition: font-size 0.15s;
-				transition-timing-function: ease-in;
-
-				&:hover{
-					text-decoration: underline;
-					cursor: pointer;
-				}
-
-				.glyphicon{
-					visibility: hidden;
-					top: @glyphicon-top-offset;
-				}
-
-				&.selected{
-					font-size: @list-group-font-size-selected;
-					color: @list-group-color-selected;
-
-					&:hover{
-						text-decoration: none;
-						cursor: default;
-					}
-
-					.glyphicon{
-						visibility: visible;
-						cursor: pointer;
-					}
-				}
-			}
-		}
-	}
-
 	.control-display-area{
 		.make-xs-column(9);
 		background: -webkit-linear-gradient(left, @control-start-bg-color, @control-stop-bg-color);

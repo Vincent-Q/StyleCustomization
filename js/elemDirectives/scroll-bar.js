@@ -19,6 +19,7 @@
     			function __calculateScrollBarArea(){
     				if(scope.contentMovableDistance <= 0){
     					scope.__setPosition(0);
+                        scope.__lastReleasedPosition = 0;
     					return;
     				}
 
@@ -102,6 +103,12 @@
 	    			});
 
 	    			scope.$on('MOUSE_WHEEL_SCROLL', function(event, delta){
+                        if(scope.contentMovableDistance <= 0){
+                            scope.__setPosition(0);
+                            scope.__lastReleasedPosition = 0;
+                            return;
+                        }
+
 	    				if(delta > 0){
 	    					scope.__setPosition(scope.__positionValue - 15);
 	    				} else {

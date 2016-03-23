@@ -1,0 +1,65 @@
+@start-bg-color: 				@sc-brand-primary;
+@middle-bg-color: 				@sc-black-base;
+@stop-bg-color:     			@sc-white-base;
+@middle-bg-position: 			35%;
+
+@nav-start-bg-color:			@sc-brand-primary;
+@nav-stop-bg-color:				@sc-black-base;
+@nav-padding-vertical:			20px;
+@nav-padding-horizontal:		30px;
+@nav-text-focus-color:			@sc-white-darker;
+@nav-text-color: 				@sc-white-dark;
+
+@glyphicon-top-offset: 			6px;
+@list-item-selected-font-type: 	'24';
+@list-item-selected-color: 		#ebebeb;
+
+html, body, .full-screen{
+	height: 100%;
+}
+
+#page-container{
+	background: -webkit-linear-gradient(left, @start-bg-color, @middle-bg-color @middle-bg-position, @stop-bg-color);
+
+	.navigator-display-area{
+		.make-xs-column(3);
+		background: -webkit-linear-gradient(left, @nav-start-bg-color, @nav-stop-bg-color);
+		padding: @nav-padding-vertical @nav-padding-horizontal;
+
+		.title{
+			color: @nav-text-focus-color;
+		}
+
+		.select-transition{
+			transition: font-size 0.15s;
+			transition-timing-function: ease-in;
+		}
+
+		.sc-list-group-item{
+			&:hover{
+				text-decoration: underline;
+				cursor: pointer;
+			}
+
+			.glyphicon{
+				visibility: hidden;
+				top: @glyphicon-top-offset;
+			}
+
+			&.selected{
+				.font-type(@list-item-selected-font-type);
+				color: @list-item-selected-color;
+
+				&:hover{
+					text-decoration: none;
+					cursor: default;
+				}
+
+				.glyphicon{
+					visibility: visible;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}

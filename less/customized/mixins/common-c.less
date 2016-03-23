@@ -1,0 +1,7 @@
+.border-style(@width; @style:solid; @color) when(@width > 0) {
+	border: @width @style @color;
+}
+
+.border-style(@width; @style; @color) when(@width = 0){
+	border: none;
+}

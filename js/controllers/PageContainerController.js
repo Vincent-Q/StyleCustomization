@@ -10,15 +10,15 @@
 			$scope.controlList = [{
 				'id': 'button',
 				'label': 'Button and button list',
-				'fileUrl': 'less/customized/buttons-c.less'
+				'fileUrl': 'less/customized/variables/buttons-v.less'
 			}, {
 				'id': 'typography',
 				'label': 'Typography',
-				'fileUrl': 'less/customized/buttons-c.less'
+				'fileUrl': 'less/customized/variables/buttons-v.less'
 			}, {
 				'id': 'list',
 				'label': 'List and list group',
-				'fileUrl': 'less/customized/buttons-c.less'
+				'fileUrl': 'less/customized/variables/buttons-v.less'
 			}];
 		}
 

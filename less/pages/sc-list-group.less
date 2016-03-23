@@ -1,0 +1,26 @@
+@sc-list-item-padding-vertical: 10px;
+@sc-list-item-padding-horizontal: 15px;
+
+// color group
+@sc-list-group-bg: transparent;
+@sc-list-item-color: #ccb6b6;
+
+@sc-list-item-border-width: 0;
+@sc-list-item-border-style: solid;
+@sc-list-item-border-color: transparent;
+
+@sc-list-item-font-type: '20';
+
+.sc-list-group{
+	.list-group;
+}
+
+.sc-list-group-item{
+	.list-group-item;
+	.border-style(@sc-list-item-border-width; @sc-list-item-border-style; @sc-list-item-border-color);
+	.font-type(@sc-list-item-font-type);
+
+	padding: @sc-list-item-padding-vertical @sc-list-item-padding-horizontal;
+	background-color: @sc-list-group-bg;
+	color: @sc-list-item-color;
+}

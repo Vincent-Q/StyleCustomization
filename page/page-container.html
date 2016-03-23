@@ -1,9 +1,9 @@
 <div id="page-container" class="container-fluid full-screen" ng-app="controlsModule" ng-controller="PageContainerController as pageContainerController" ng-mouseup="mouseUp()" ng-mousemove="mouseMove($event)">
 	<div ui-view="setting-panel"></div>
   <div class="navigator-display-area full-screen">
-      <h2>Style Customization Tool</h2>
-		  <ul class="list-group">
-        <li class="list-group-item" use-class="selected: selectedIndex === $index" ng-click="selectControl($index)" ng-repeat="item in controlList">{{item.label}} &nbsp;
+      <h2 class="title">Style Customization Tool</h2>
+		  <ul class="sc-list-group">
+        <li class="sc-list-group-item select-transition" use-class="selected: selectedIndex === $index" ng-click="selectControl($index)" ng-repeat="item in controlList">{{item.label}} &nbsp;
           <span class="glyphicon glyphicon-cog" ng-click="showSetting($index)"></span>
         </li>
 		  </ul>
