@@ -33,86 +33,8 @@
 @list-group-color-selected: @base-color;
 @glyphicon-top-offset: 6px;
 
-html, body, .full-screen{
-	height: 100%;
-}
-
 #page-container{
-	.control-display-area{
-		.make-xs-column(9);
-		background: -webkit-linear-gradient(left, @control-start-bg-color, @control-stop-bg-color);
-		padding-top: @control-padding-vertical;
-
-		&.push-right{
-			.make-xs-column-push(1);
-			.make-xs-column(8);
-		}
-	}
-
 	.setting-panel{
-		position: absolute;
-		background-color: @setting-panel-bg;
-		width: @panel-width;
-		left: @panel-hidden-position;
-
-		border-top-right-radius: @panel-border-radius;
-		border-bottom-right-radius: @panel-border-radius;
-
-		padding: @panel-padding-vertical @panel-padding-horizontal;
-
-		transition: left 0.3s;
-		transition-timing-function: ease-in;
-
-		z-index: 1;
-
-		/*&:hover, */&.shown{
-			left: 0px;
-		}
-
-		.title{
-			padding-top: 20px;
-		}
-
-		.pushpin{
-			&:hover{
-				cursor: pointer;
-			}
-
-			&.fixed{
-				color: green;
-			}
-
-			font-size: 20px;
-			top: 30px;
-		}
-
-		.display-box{
-			height: 84%;
-			overflow: hidden;
-
-			.scroll-bar{
-			    position: absolute;
-			    display: block;
-			    height: 80%;
-			    background-color: #b3b3b3;
-			    width: 12px;
-			    /* float: right; */
-			    right: 8px;
-			    top: 80px;
-			    border-radius: 15px;
-			    /* border-top-right-radius: 15px; */
-
-			    .cursor{
-			    	width: 100%;
-				    height: 37px;
-				    background-color: #7d7d7d;
-				    border-radius: 15px;
-				    transform: translateY(144px);
-				    cursor: pointer;
-			    }
-			}
-		}
-
 		.divider{
 			width: 100%;
 			height: 1px;

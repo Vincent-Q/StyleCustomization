@@ -1,18 +1,46 @@
-@start-bg-color: 				@sc-brand-primary;
-@middle-bg-color: 				@sc-black-base;
-@stop-bg-color:     			@sc-white-base;
-@middle-bg-position: 			35%;
+// body gradient relevant 
+@start-bg-color: 							@sc-brand-primary;
+@middle-bg-color: 							@sc-black-base;
+@stop-bg-color:     						@sc-white-base;
+@middle-bg-position: 						35%;
 
-@nav-start-bg-color:			@sc-brand-primary;
-@nav-stop-bg-color:				@sc-black-base;
-@nav-padding-vertical:			20px;
-@nav-padding-horizontal:		30px;
-@nav-text-focus-color:			@sc-white-darker;
-@nav-text-color: 				@sc-white-dark;
+// left side navigation bar variables
+@nav-start-bg-color:						@sc-brand-primary;
+@nav-stop-bg-color:							@sc-black-base;
+@nav-padding-vertical:						20px;
+@nav-padding-horizontal:					30px;
+@nav-text-focus-color:						@sc-white-darker;
+@nav-text-color: 							@sc-white-dark;
 
-@glyphicon-top-offset: 			6px;
-@list-item-selected-font-type: 	'24';
-@list-item-selected-color: 		#ebebeb;
+@glyphicon-top-offset: 						6px;
+@list-item-selected-font-type: 				'24';
+@list-item-selected-color: 					#ebebeb;
+
+// right side control display area variables
+@control-start-bg-color: 					@sc-black-base;
+@control-stop-bg-color: 					@sc-black-medium-transparency;
+@control-padding-vertical: 					80px;
+
+// setting panel variables
+@setting-panel-bg: 							@sc-white-darker;
+@setting-panel-width: 						614px;
+@setting-panel-hidden-pos: 					-604px;
+@setting-panel-border-radius: 				8px;
+
+@sp-padding-vertical: 						20px;
+@sp-padding-horizontal: 					30px;
+@sp-title-padding-top: 						20px;
+@sp-push-pin-padding-top: 					30px;
+@sp-push-pin-font-type: 					'20';
+@sp-push-pin-selected-color: 				green;
+
+@sp-scroll-bar-height: 						80%;
+@sp-scroll-bar-width: 						12px;
+@sp-scroll-bar-pos-right: 					8px;
+@sp-scroll-bar-pos-top: 					80px;
+@sp-scroll-bar-radius: 						15px;
+@sp-scroll-bar-bg: 							@sc-black-lighter;
+@sp-scroll-bar-cursor-bg: 					@sc-black-light;
 
 html, body, .full-screen{
 	height: 100%;
@@ -59,6 +87,81 @@ html, body, .full-screen{
 					visibility: visible;
 					cursor: pointer;
 				}
+			}
+		}
+	}
+
+	.control-display-area{
+		.make-xs-column(9);
+		background: -webkit-linear-gradient(left, @control-start-bg-color, @control-stop-bg-color);
+		padding-top: @control-padding-vertical;
+
+		&.push-right{
+			.make-xs-column-push(1);
+			.make-xs-column(8);
+		}
+	}
+
+	.setting-panel{
+		position: absolute;
+		z-index: 1;
+
+		width: @setting-panel-width;
+		left: @setting-panel-hidden-pos;
+		.border-right-radius(@setting-panel-border-radius);
+
+		background-color: @setting-panel-bg;
+		transition: left 0.3s;
+		transition-timing-function: ease-in;
+
+		&.shown{
+			left: 0px;
+		}
+
+		// text content styles in setting panel
+		padding: @sp-padding-vertical @sp-padding-horizontal;
+
+		.title{
+			padding-top: @sp-title-padding-top;
+		}
+
+		.pushpin{
+			padding-top: @sp-push-pin-padding-top;
+
+			&:hover{
+				cursor: pointer;
+			}
+
+			&.fixed{
+				color: @sp-push-pin-selected-color;
+			}
+
+			.font-type(@sp-push-pin-font-type);
+		}
+
+		.display-box{
+			height: 84%;
+			overflow: hidden;
+
+			.scroll-bar{
+				position: absolute;
+				display: block;
+
+				width: @sp-scroll-bar-width;
+				height: @sp-scroll-bar-height;
+				border-radius: @sp-scroll-bar-radius;
+
+				right: @sp-scroll-bar-pos-right;
+			    top: @sp-scroll-bar-pos-top;
+
+			    background-color: @sp-scroll-bar-bg;
+			    
+			    .cursor{
+			    	width: 100%;
+				    background-color: @sp-scroll-bar-cursor-bg;
+				    border-radius: @sp-scroll-bar-radius;
+				    cursor: pointer;
+			    }
 			}
 		}
 	}
