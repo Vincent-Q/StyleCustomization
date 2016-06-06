@@ -42,6 +42,17 @@
 @sp-scroll-bar-bg: 							@sc-black-lighter;
 @sp-scroll-bar-cursor-bg: 					@sc-black-light;
 
+@sp-divider-height: 						1px;
+@sp-divider-bg: 							@sc-black-lighter;
+@sp-divider-margin-vertical: 				10px;
+
+@sp-collapse-plate-border: 					2px;
+@sp-collapse-plate-radius: 					12px;
+@sp-collapse-plate-width: 					24px;
+@sp-collapse-plate-height: 					24px;
+@sp-collapse-plate-border-color: 			@sc-black-lighter;
+@sp-collapse-icon-color: 					@sc-black-light;
+
 html, body, .full-screen{
 	height: 100%;
 }
@@ -163,6 +174,17 @@ html, body, .full-screen{
 				    cursor: pointer;
 			    }
 			}
+		}
+
+		.divider{
+			width: 100%;
+			height: @sp-divider-height;
+			background-color: @sp-divider-bg;
+			margin: @sp-divider-margin-vertical auto;
+		}
+
+		.collapse-plate{
+		    float: right;
 		}
 	}
 }
