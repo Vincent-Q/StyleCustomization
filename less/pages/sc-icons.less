@@ -1,0 +1,52 @@
+@icon-plate-border-width: 			2px;
+@icon-plate-border-radius: 			4px;
+@icon-circle-plate-border-radius: 	12px;
+@icon-plate-border-color: 			@sc-black-lighter;
+
+@icon-plate-width: 					24px;
+@icon-plate-height: 				24px;
+
+@collapse-icon-color: 				@sc-black-light;
+
+.icon-plate-with-border, .icon-plate-without-border{
+	width: @icon-plate-width;
+    height: @icon-plate-height;
+    
+    cursor: pointer;
+}
+
+.icon-plate-with-border{
+	border: @icon-plate-border-width solid;
+    border-radius: @icon-plate-border-radius;
+    border-color: @icon-plate-border-color;
+}
+
+.reset-plate{
+	.icon-plate-without-border;
+}
+
+.check-plate{
+	.icon-plate-with-border;
+
+	.glyphicon{
+		color: green;
+	}
+}
+
+.collapse-plate{
+    .icon-plate-with-border;
+	border-radius: @icon-circle-plate-border-radius;
+
+	.glyphicon{
+		left: 4px;
+		color: @collapse-icon-color;
+
+		&.glyphicon-chevron-down{
+			top: 3px;
+		}
+
+		&.glyphicon-chevron-up{
+			top: 1px;
+		}
+	}
+}
